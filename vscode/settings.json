@@ -1,0 +1,286 @@
+{
+  // Editor Settings
+  "editor.formatOnSave": true,
+  "editor.fontSize": 18,
+  "editor.hover.delay": 1000,
+  "editor.wordWrap": "on",
+  "editor.suggest.insertMode": "replace",
+  "editor.cursorSurroundingLines": 10,
+  "editor.linkedEditing": true,
+  "editor.multiCursorModifier": "alt",
+  "editor.renderLineHighlight": "gutter",
+  "editor.cursorStyle": "underline-thin",
+  "editor.minimap.enabled": false,
+  "editor.wordBasedSuggestions": "off",
+  "editor.overviewRulerBorder": false,
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "launch": {},
+  "[json]": {},
+  "update.showReleaseNotes": false,
+  "zenMode.hideLineNumbers": false,
+  "workbench.statusBar.visible": true,
+  "window.zoomLevel": 0.1,
+  "editor.renderWhitespace": "none",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.suggestSelection": "first",
+  "editor.guides.indentation": false,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.suggest.showMethods": true,
+  "editor.suggest.preview": true,
+  "editor.lineNumbers": "relative",
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top",
+  "editor.quickSuggestionsDelay": 500,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnType": false, // required
+  "editor.formatOnPaste": true, // optional
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "files.autoSave": "onFocusChange", // optional but recommended
+  "vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
+
+  "workbench.colorTheme": "Safira Dark",
+  "editor.fontFamily": "JetBrainsMonoNL Nerd Font Propo",
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 1.7,
+  "editor.semanticHighlighting.enabled": true,
+
+  // Workbench Settings
+  "workbench.settings.editor": "json",
+  "workbench.activityBar.location": "top",
+  "workbench.layoutControl.enabled": false,
+  "workbench.sideBar.location": "left",
+  "workbench.panel.defaultLocation": "right",
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.colorCustomizations": {
+    "terminal.background": "#01111e"
+  },
+  "debug.allowBreakpointsEverywhere": true,
+  "terminal.integrated.fontFamily": "monospace",
+  "json.schemas": [],
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "window.title": " ",
+  "window.commandCenter": false,
+  "zenMode.centerLayout": false,
+  "typescript.format.enable": false,
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
+  // Language specific settings
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[java]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "[SQL]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dockercompose]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker",
+    "editor.formatOnSave": true
+  },
+  // Rust Specific Settings
+  "rust-analyzer.inlayHints.maxLength": null,
+  "rust-analyzer.imports.granularity.enforce": true,
+  "wgsl-analyzer.server.path": "brandonrobb/.cargo/bin/wgsl_analyzer",
+  "wgsl-analyzer.inlayHints.enabled": true,
+  "wgsl-analyzer.inlayHints.typeHints": true,
+  "wgsl-analyzer.inlayHints.parameterHints": true,
+  "wgsl-analyzer.inlayHints.structLayoutHints": false,
+  "wgsl-analyzer.inlayHints.typeVerbosity": "compact",
+  "rust-analyzer.checkOnSave": true,
+  "rust-analyzer.check.command": "clippy",
+  "wgsl-analyzer.preprocessor.shaderDefs": [
+    "VERTEX_UVS",
+    "VERTEX_TANGENTS",
+    "VERTEX_COLORS",
+    "SKINNED"
+  ],
+
+  // Vim Settings
+  "vim.easymotion": true,
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": true
+  },
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  // To improve performance
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Switch b/w buffers
+    { "before": ["<S-h>"], "commands": [":bprevious"] },
+    { "before": ["<S-l>"], "commands": [":bnext"] },
+
+    // Splits
+    { "before": ["leader", "v"], "commands": [":vsplit"] },
+    { "before": ["leader", "s"], "commands": [":split"] },
+
+    // Panes
+    {
+      "before": ["leader", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["leader", "j"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["leader", "k"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+
+    // File Tree
+    {
+      "before": ["leader", "n", "e"],
+      "commands": ["workbench.explorer.fileView.focus"]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["lineBreakInsert"],
+      "silent": true
+    },
+    { "before": ["leader", "w", "q"], "commands": [":wq!"] },
+    { "before": ["leader", "w"], "commands": [":w!"] },
+    { "before": ["leader", "q"], "commands": [":q!"] },
+    { "before": ["leader", "x"], "commands": [":x!"] },
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["leader", "m"],
+      "commands": ["editor.action.triggerSuggest"]
+    },
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    { "before": ["leader", "f"], "commands": ["workbench.action.quickOpen"] },
+    { "before": ["leader", "p"], "commands": ["editor.action.formatDocument"] },
+    {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    // Stay in visual mode while indenting
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    // Move selected lines while staying in visual mode
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+    // toggle comment selection
+    { "before": ["leader", "c"], "commands": ["editor.action.commentLine"] }
+  ],
+  "cSpell.userWords": [
+    "Avenir",
+    "azuretools",
+    "bigdecimal",
+    "bnext",
+    "bprevious",
+    "brandonrobb",
+    "Brobb",
+    "chrono",
+    "clippy",
+    "codespaces",
+    "CPSC",
+    "deadpool",
+    "Deque",
+    "devnet",
+    "dockercompose",
+    "dotenv",
+    "dotenvy",
+    "easymotion",
+    "esbenp",
+    "heroicons",
+    "hlsearch",
+    "incsearch",
+    "Insertable",
+    "Keypair",
+    "LAMPORTS",
+    "lucide",
+    "Meslo",
+    "nanos",
+    "nohl",
+    "outdent",
+    "Powerline",
+    "powi",
+    "Propo",
+    "Pubkey",
+    "rvest",
+    "Safira",
+    "solana",
+    "sqlx",
+    "sqrtf",
+    "Sysvar",
+    "tailwindcss",
+    "Tauri",
+    "userid",
+    "vite",
+    "vscodevim",
+    "vsplit",
+    "wgsl"
+  ],
+  "github.copilot.enable": {
+    "markdown": "true"
+  },
+  "nxConsole.showNodeVersionOnStartup": false,
+  "git.openRepositoryInParentFolders": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "breadcrumbs.enabled": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "github.copilot.editor.enableAutoCompletions": true
+}

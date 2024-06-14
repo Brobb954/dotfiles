@@ -1,0 +1,2 @@
+"https://github.com/tmux-plugins/tpm.git"
+"https://github.com/tmux-plugins/tmux-sensible.git"
