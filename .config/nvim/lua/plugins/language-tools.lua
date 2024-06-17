@@ -1,6 +1,4 @@
 return {
-  { "mfussenegger/nvim-dap" },
-
   {
     "mrcjkb/rustaceanvim",
     version = "^4",
