@@ -10,7 +10,7 @@ import = [
 dynamic_title = true
 option_as_alt = "OnlyRight"
 decorations = "None"
-dimensions = { columns = 161, lines = 43 }
+dimensions = { columns = 161, lines = 44 }
 position = { x = 20, y = 1000 }
 
 [env]
