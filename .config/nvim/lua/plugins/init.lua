@@ -1,38 +1,31 @@
 return {
-  {
-    "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
-    config = function()
-      require "configs.conform"
-    end,
-  },
-
-  -- These are some examples, uncomment them if you want to see them work!
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   config = function()
-  --     require("nvchad.configs.lspconfig").defaults()
-  --     require "configs.lspconfig"
-  --   end,
-  -- },
-  --
-  -- {
-  -- 	"williamboman/mason.nvim",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"lua-language-server", "stylua",
-  -- 			"html-lsp", "css-lsp" , "prettier"
-  -- 		},
-  -- 	},
-  -- },
-  --
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  { import = "plugins.override.blankline" },
+  { import = "plugins.override.conform" },
+  { import = "plugins.override.lspconfig" },
+  { import = "plugins.override.nvim-tree" },
+  { import = "plugins.override.nvim-treesitter" },
+  { import = "plugins.override.nvim-web-dev-icons" },
+  { import = "plugins.override.telescope" },
+  { import = "plugins.custom.alpha" },
+  { import = "plugins.custom.colorizer" },
+  { import = "plugins.custom.comment" },
+  { import = "plugins.custom.crates" },
+  { import = "plugins.custom.dap-python" },
+  { import = "plugins.custom.dap-ui" },
+  { import = "plugins.custom.dropbar" },
+  { import = "plugins.custom.fine-cmdline" },
+  { import = "plugins.custom.goto-preview" },
+  { import = "plugins.custom.hop" },
+  { import = "plugins.custom.lsp-signature" },
+  { import = "plugins.custom.matchup" },
+  { import = "plugins.custom.neogit" },
+  { import = "plugins.custom.screenkey" },
+  { import = "plugins.custom." },
+  { import = "plugins.custom." },
+  { import = "plugins.custom." },
+  { import = "plugins.custom." },
+  { import = "plugins.custom." },
+  { import = "plugins.custom." },
+  { import = "plugins.custom." },
+  { import = "plugins.custom." },
 }
