@@ -9,7 +9,7 @@ M.ui = {
   theme = "catppuccin",
 
   statusline = {
-    theme = "vscode_colored",
+    -- theme = "vscode_colored",
     order = {
       "mode",
       "tint",
@@ -21,7 +21,7 @@ M.ui = {
       "%=",
       "diagnostics",
       "lsp",
-      "harpoon",
+      -- "harpoon",
       "separator",
       "cwd",
     },
@@ -37,64 +37,64 @@ M.ui = {
         local bufnr = vim.api.nvim_get_current_buf()
         return "%#StText#" .. tostring(bufnr)
       end,
-      harpoon = function()
-        -- https://github.com/letieu/harpoon-lualine
-        local inactive = "%#St_HarpoonInactive#"
-        local active = "%#St_HarpoonActive#"
-
-        local options = {
-          icon = active .. " ⇁ ",
-          separator = "",
-          indicators = {
-            inactive .. "q",
-            inactive .. "w",
-            inactive .. "e",
-            inactive .. "r",
-            inactive .. "t",
-            inactive .. "y",
-          },
-          active_indicators = {
-            active .. "1",
-            active .. "2",
-            active .. "3",
-            active .. "4",
-            active .. "5",
-            active .. "6",
-          },
-        }
-
-        local list = require("harpoon"):list()
-        local root_dir = list.config:get_root_dir()
-        local current_file_path = vim.api.nvim_buf_get_name(0)
-        local length = math.min(list:length(), #options.indicators)
-        local status = { options.icon }
-
-        local get_full_path = function(root, value)
-          if vim.loop.os_uname().sysname == "Windows_NT" then
-            return root .. "\\" .. value
-          end
-
-          return root .. "/" .. value
-        end
-
-        for i = 1, length do
-          local value = list:get(i).value
-          local full_path = get_full_path(root_dir, value)
-
-          if full_path == current_file_path then
-            table.insert(status, options.active_indicators[i])
-          else
-            table.insert(status, options.indicators[i])
-          end
-        end
-
-        if length > 0 then
-          table.insert(status, " ")
-          return table.concat(status, options.separator)
-        else
-          return ""
-        end
-      end,
+      -- harpoon = function()
+      --   -- https://github.com/letieu/harpoon-lualine
+      --   local inactive = "%#St_HarpoonInactive#"
+      --   local active = "%#St_HarpoonActive#"
+      --
+      --   local options = {
+      --     icon = active .. " ⇁ ",
+      --     separator = "",
+      --     indicators = {
+      --       inactive .. "q",
+      --       inactive .. "w",
+      --       inactive .. "e",
+      --       inactive .. "r",
+      --       inactive .. "t",
+      --       inactive .. "y",
+      --     },
+      --     active_indicators = {
+      --       active .. "1",
+      --       active .. "2",
+      --       active .. "3",
+      --       active .. "4",
+      --       active .. "5",
+      --       active .. "6",
+      --     },
+      --   }
+      --
+      --   local list = require("harpoon"):list()
+      --   local root_dir = list.config:get_root_dir()
+      --   local current_file_path = vim.api.nvim_buf_get_name(0)
+      --   local length = math.min(list:length(), #options.indicators)
+      --   local status = { options.icon }
+      --
+      --   local get_full_path = function(root, value)
+      --     if vim.loop.os_uname().sysname == "Windows_NT" then
+      --       return root .. "\\" .. value
+      --     end
+      --
+      --     return root .. "/" .. value
+      --   end
+      --
+      --   for i = 1, length do
+      --     local value = list:get(i).value
+      --     local full_path = get_full_path(root_dir, value)
+      --
+      --     if full_path == current_file_path then
+      --       table.insert(status, options.active_indicators[i])
+      --     else
+      --       table.insert(status, options.indicators[i])
+      --     end
+      --   end
+      --
+      --   if length > 0 then
+      --     table.insert(status, " ")
+      --     return table.concat(status, options.separator)
+      --   else
+      --     return ""
+      --   end
+      -- end,
     },
   },
 
