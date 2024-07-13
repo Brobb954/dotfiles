@@ -21,6 +21,12 @@ map("n", "<A-Left>", function()
   tabufline.move_buf(-1)
 end)
 
+-- Quick resize pane
+map("n", "<C-A-h>", "5<C-w>>", { desc = "Window increase width by 5" })
+map("n", "<C-A-l>", "5<C-w><", { desc = "Window decrease width by 5" })
+map("n", "<C-A-k>", "5<C-w>+", { desc = "Window increase height by 5" })
+map("n", "<C-A-j>", "5<C-w>-", { desc = "Window decrease height by 5" })
+
 -- Allow cursor to move between vim panes
 map("n", "<c-k>", ":wincmd k<CR>")
 map("n", "<c-j>", ":wincmd j<CR>")
@@ -55,6 +61,45 @@ map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "Toggle nvcheatsheet" }
 map("n", "gh", function()
   utils.go_to_github_link()
 end, { desc = "Go to GitHub link generated from string" })
+
+-- Term
+map("t", "<C-x>", "<C-\\><C-N>", { desc = "Term escape terminal mode" })
+
+map({ "n", "t" }, "<A-v>", function()
+  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
+end, { desc = "Term toggle vertical split" })
+
+map({ "n", "t" }, "<C-A-v>", function()
+  require("nvchad.term").toggle {
+    pos = "vsp",
+    id = "vtoggleTermLoc",
+    cmd = "cd " .. vim.fn.expand "%:p:h",
+  }
+end, { desc = "Term toggle vertical split in buffer location" })
+
+map({ "n", "t" }, "<A-h>", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+end, { desc = "Term toggle horizontal split" })
+
+map({ "n", "t" }, "<C-A-h>", function()
+  require("nvchad.term").toggle {
+    pos = "sp",
+    id = "htoggleTermLoc",
+    cmd = "cd " .. vim.fn.expand "%:p:h",
+  }
+end, { desc = "Term toggle horizontal split in buffer location" })
+
+map({ "n", "t" }, "<A-i>", function()
+  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+end, { desc = "Term toggle floating" })
+
+map({ "n", "t" }, "<C-A-i>", function()
+  require("nvchad.term").toggle {
+    pos = "float",
+    id = "floatTermLoc",
+    cmd = "cd " .. vim.fn.expand "%:p:h",
+  }
+end, { desc = "Term toggle floating in buffer location" })
 
 --- Tabufline
 local tabufline = require "nvchad.tabufline"

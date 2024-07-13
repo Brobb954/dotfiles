@@ -10,7 +10,6 @@ return {
   { import = "plugins.custom.colorizer" },
   { import = "plugins.custom.comment" },
   { import = "plugins.custom.crates" },
-  { import = "plugins.custom.tmux-vim-navigator" },
   { import = "plugins.custom.dap-python" },
   { import = "plugins.custom.dap-ui" },
   { import = "plugins.custom.dropbar" },
