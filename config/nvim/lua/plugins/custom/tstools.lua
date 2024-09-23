@@ -1,5 +1,6 @@
 local on_attach = require("brobb.custom_hover").custom_on_attach
 
+---@type NvPluginSpec
 return {
   "pmizio/typescript-tools.nvim",
   ft = {

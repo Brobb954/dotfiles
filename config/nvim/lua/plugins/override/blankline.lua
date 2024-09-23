@@ -1,3 +1,5 @@
+---@type NvPluginSpec
+
 return {
   "lukas-reineke/indent-blankline.nvim",
   init = function()

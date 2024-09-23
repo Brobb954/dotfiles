@@ -1,7 +1,6 @@
 local create_cmd = vim.api.nvim_create_user_command
 local utils = require "brobb.utils"
 
-
 create_cmd("ToggleInlayHints", function()
   ---@diagnostic disable-next-line
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
@@ -30,6 +29,11 @@ end, { desc = "Batch update" })
 create_cmd("FormatFile", function()
   require("conform").format { lsp_fallback = true }
 end, { desc = "Format files via conform" })
+--
+-- create_cmd("Toggle TW colors", function()
+--   require("tailwind-tools").setup()
+-- end, {desc = "Toggle inline tailwind colors"}
+-- )
 
 create_cmd("FormatProject", function()
   local project_dir = vim.fn.getcwd()

@@ -6,6 +6,10 @@ local g = {
   skip_ts_context_commentstring_module = true,
 }
 
+vim.diagnostic.config {
+  virtual_text = false,
+}
+
 local opt = {
   encoding = "utf-8",
   fileencoding = "utf-8",
