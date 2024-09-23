@@ -12,7 +12,6 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
-
 eval "$(oh-my-posh init zsh --config ~/custom_theme.toml)"
 eval "$(fzf --zsh)"
 
@@ -31,4 +30,4 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
-
+export PATH="$PATH:/Users/brandonrobb/bootdotdev/worldbanc/private/bin"

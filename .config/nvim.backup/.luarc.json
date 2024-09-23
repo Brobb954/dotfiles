@@ -1,0 +1,9 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "heelo",
+        "project_actions",
+        "local",
+        "neotree"
+    ]
+}

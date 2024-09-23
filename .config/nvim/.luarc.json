@@ -1,9 +1,12 @@
 {
     "diagnostics.globals": [
+        "bit",
         "vim",
-        "heelo",
-        "project_actions",
-        "local",
-        "neotree"
+        "it",
+        "describe",
+        "before_each",
+        "after_each",
+        "tabufline",
+        "require"
     ]
 }
