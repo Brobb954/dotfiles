@@ -13,7 +13,7 @@ return {
         "astro",
         "bashls",
         "clangd",
-        -- "css_variables",
+        "css_variables",
         "cssls",
         "eslint",
         "html",
@@ -24,7 +24,7 @@ return {
         "ocamllsp",
         "pyright",
         "somesass_ls",
-        -- "tailwindcss",
+        "tailwindcss",
         "taplo",
         "yamlls",
       }

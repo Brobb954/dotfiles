@@ -1,4 +1,6 @@
 ---@diagnostic disable: different-requires
+
+---@type NvPluginSpec
 return {
   "saecki/crates.nvim",
   ft = { "rust", "toml" },

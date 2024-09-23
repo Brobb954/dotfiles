@@ -6,7 +6,7 @@
 --- Create a global keymap
 ---@field glb_map fun(mode: string | table, lhs: string | table, rhs: string | fun(), opts?: table | nil)
 --- Create a keymap local to buffer
----@field buf_map fun(mode: string, lhs: string, rhs: string, opts?: table)
+---@field buf_map fun(buf?: integer, mode: string | table, lhs: string | table, rhs: string | fun(), opts?: table)
 --- Delete keymap/s globally. Does not attempt to unmap if keymap does not exist.
 ---@field del_map fun(mode: string | table, trigger: string | table)
 --- Format a file based on its path, using conform
@@ -26,14 +26,13 @@ M.is_tbl = function(v)
 end
 
 M.glb_map = function(mode, lhs, rhs, opts)
-  local is_tbl = M.is_tbl
   local options = { noremap = true, silent = true }
 
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end
 
-  if is_tbl(lhs) then
+  if M.is_tbl(lhs) then
     ---@cast lhs table
     for _, trigger in ipairs(lhs) do
       vim.keymap.set(mode, trigger, rhs, options)
@@ -44,12 +43,10 @@ M.glb_map = function(mode, lhs, rhs, opts)
   end
 end
 
-M.buf_map = function(mode, lhs, rhs, opts)
-  local final_opts = { noremap = true, silent = true }
-  if opts then
-    final_opts = vim.tbl_extend("force", final_opts, opts)
-  end
-  vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, final_opts)
+M.buf_map = function(bufnr, mode, lhs, rhs, opts)
+  opts = opts or {}
+  opts.buffer = bufnr and bufnr or 0
+  M.glb_map(mode, lhs, rhs, opts)
 end
 
 local map_exists = function(name, map_mode)
@@ -194,5 +191,39 @@ M.format_file = function(file_path)
 
   vim.api.nvim_buf_delete(bufnr, { force = true })
 end
+
+-- --- Listener for code actions capabilities
+-- M.code_action_listener = function()
+--   local buffer = vim.api.nvim_get_current_buf()
+--   local clients = vim.lsp.get_clients { bufnr = buffer }
+--
+--   if clients == nil or #clients == 0 then
+--     return
+--   end
+--
+--   local has_code_action_support = vim.tbl_filter(function(client)
+--     return client.server_capabilities.codeActionProvider
+--   end, clients)[1] ~= nil
+--
+--   if has_code_action_support then
+--     local context = { diagnostics = vim.lsp.diagnostic.get_line_diagnostics(buffer) }
+--     local params = vim.lsp.util.make_range_params()
+--     params.context = context
+--
+--     vim.lsp.buf_request(buffer, "textDocument/codeAction", params, function(_, result, _, _)
+--       vim.fn.sign_unplace("code_action_gear", { buffer = buffer })
+--
+--       if result and next(result) then
+--         vim.fn.sign_place(
+--           0,
+--           "code_action_gear",
+--           "CodeActionSign",
+--           buffer,
+--           { lnum = vim.api.nvim_win_get_cursor(0)[1], priority = 100 }
+--         )
+--       end
+--     end)
+--   end
+-- end
 
 return M
