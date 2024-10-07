@@ -40,7 +40,16 @@ return {
       },
       marksman = {},
       ocamllsp = {},
-      pyright = {},
+      pyright = {
+        config = {
+          settings = {
+            pyright = {
+              -- Using Ruff's import organizer
+              disableOrganizeImports = true,
+            },
+          },
+        },
+      },
       ruff_lsp = {
         on_attach = function(client, _)
           -- prefer pyright's hover provider
@@ -97,8 +106,5 @@ return {
     -- :LspInfo
     local win = require "lspconfig.ui.windows"
     win.default_options = { border = border }
-
-    -- -- Gutter
-    -- vim.fn.sign_define("CodeActionSign", { text = "󰉁", texthl = "CodeActionSignHl" })
   end,
 }

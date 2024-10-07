@@ -20,6 +20,7 @@ return {
   { import = "plugins.custom.harpoon" },
   { import = "plugins.custom.hop" },
   { import = "plugins.custom.lsp-signature" },
+  { import = "plugins.custom.lazygit" },
   { import = "plugins.custom.matchup" },
   { import = "plugins.custom.neogit" },
   { import = "plugins.custom.notify" },
