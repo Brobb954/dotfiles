@@ -7,6 +7,7 @@ return {
   { import = "plugins.override.nvim-treesitter" },
   { import = "plugins.override.nvim-web-dev-icons" },
   { import = "plugins.override.telescope" },
+  { import = "plugins.override.ui" },
   { import = "plugins.custom.alpha" },
   { import = "plugins.custom.colorizer" },
   { import = "plugins.custom.comment" },

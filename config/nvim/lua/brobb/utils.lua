@@ -11,6 +11,14 @@
 ---@field del_map fun(mode: string | table, trigger: string | table)
 --- Format a file based on its path, using conform
 ---@field format_file fun(file_path: string)
+--- Helper function to match valid "words" in a line
+---@field word_iterator fun(line: string): function
+--- Helper function to count valid "words" in a line
+---@field count_with_exclude fun(line: string, opts?: table): integer
+--- Helper function to count valid "words" in a buffer
+---@field count_words_in_buffer fun(): string
+--- Helper function to count valid "words" in a line
+---@field count_words_in_line fun(): string
 local M = {}
 
 M.add_alias = function(target_cmd, alias)
@@ -192,7 +200,7 @@ M.format_file = function(file_path)
   vim.api.nvim_buf_delete(bufnr, { force = true })
 end
 
--- Listener for code actions capabilities
+--- Listener for code actions capabilities
 M.code_action_listener = function()
   local buffer = vim.api.nvim_get_current_buf()
   local clients = vim.lsp.get_clients { bufnr = buffer }
@@ -204,7 +212,7 @@ M.code_action_listener = function()
   local has_code_action_support = vim.tbl_filter(function(client)
     return client.server_capabilities.codeActionProvider
   end, clients)[1] ~= nil
-  -- --
+
   if has_code_action_support then
     local context = { diagnostics = vim.lsp.diagnostic.get_line_diagnostics(buffer) }
     local params = vim.lsp.util.make_range_params()
@@ -223,6 +231,93 @@ M.code_action_listener = function()
         )
       end
     end)
+  end
+end
+
+M.handle_copy = function()
+  local mode = vim.fn.mode()
+  if mode == "v" or mode == "V" or mode == "" then
+    if vim.fn.line "'<" == vim.fn.line "'>" and vim.fn.col "'<" == vim.fn.col "'>" then
+      vim.cmd.normal '"+yy'
+    else
+      vim.cmd.normal '"+y'
+    end
+  else
+    vim.cmd.normal '"+yy'
+  end
+end
+
+M.handle_paste = function()
+  vim.cmd.normal '"+p'
+end
+
+M.menus = {
+  main = {
+    {
+      name = "  Copy",
+      cmd = M.handle_copy,
+    },
+    {
+      name = "  Paste",
+      cmd = M.handle_paste,
+    },
+    { name = "separator" },
+    {
+      name = "󰉁 Lsp Actions",
+      hl = "Exblue",
+      items = "lsp",
+    },
+    { name = "separator" },
+    {
+      name = "  Color Picker",
+      hl = "Exred",
+      cmd = function()
+        require("minty.huefy").open()
+      end,
+    },
+  },
+}
+
+M.word_iterator = function(line)
+  -- Match sequences of alphanumeric characters, underscores, periods, or hyphens
+  local pattern = "[%w_%-%.]+"
+  return function()
+    return string.gmatch(line, pattern)
+  end
+end
+
+M.count_with_exclude = function(line, opts)
+  opts = opts or {}
+  local word_count = 0
+  for word in M.word_iterator(line)() do
+    if word ~= opts.exclude then
+      word_count = word_count + 1
+    end
+  end
+  return word_count
+end
+
+vim.g.st_words_in_line = true
+M.count_words_in_line = function()
+  local line = vim.api.nvim_get_current_line()
+  local word_count = M.count_with_exclude(line, { exclude = ".." })
+  if vim.g.st_words_in_line then
+    return string.format(" %%#St_GitBranch#%d ", word_count)
+  else
+    return ""
+  end
+end
+
+M.count_words_in_buffer = function()
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  local total_word_count = 0
+  for _, line in ipairs(lines) do
+    total_word_count = total_word_count + M.count_with_exclude(line, { exclude = ".." })
+  end
+  if vim.g.st_words_in_buffer then
+    return string.format("%%#StText#[%d] ", total_word_count)
+  else
+    return ""
   end
 end
 
