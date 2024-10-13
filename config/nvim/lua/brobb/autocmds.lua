@@ -3,8 +3,6 @@ local autocmd = vim.api.nvim_create_autocmd
 local utils = require "brobb.utils"
 local buf_map = utils.buf_map
 
--- Gutter
-vim.fn.sign_define("CodeActionSign", { text = "󰉁", texthl = "CodeActionSignHl" })
 autocmd("LspAttach", {
   desc = "Display code action sign in gutter if available.",
   pattern = "*",
@@ -60,6 +58,17 @@ autocmd("FileType", {
   group = augroup("FixCheatsheetZindex", { clear = true }),
   callback = function()
     vim.api.nvim_win_set_config(0, { zindex = 44 })
+  end,
+})
+
+autocmd("FileType", {
+  desc = "Workaround for NvMenu being below NvimTree.",
+  pattern = "NvMenu",
+  group = augroup("FixNvMenuZindex", { clear = true }),
+  callback = function()
+    if vim.bo.ft == "NvMenu" then
+      vim.api.nvim_win_set_config(0, { zindex = 99 })
+    end
   end,
 })
 
@@ -258,6 +267,7 @@ autocmd("FileType", {
 })
 
 autocmd({ "UIEnter", "ColorScheme" }, {
+  desc = "Set background color for nvim to match terminal's background.",
   callback = function()
     local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
     if not normal.bg then
@@ -268,6 +278,7 @@ autocmd({ "UIEnter", "ColorScheme" }, {
 })
 
 autocmd("UILeave", {
+  desc = "Reset background color for nvim.",
   callback = function()
     io.write "\027]11;#1e1e2e\007"
   end,

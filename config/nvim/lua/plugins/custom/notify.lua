@@ -10,6 +10,8 @@ return {
     vim.notify.setup {
       background_colour = "#1c2433",
       top_down = true,
+      render = "wrapped-default",
+      stages = "slide",
     }
   end,
 }

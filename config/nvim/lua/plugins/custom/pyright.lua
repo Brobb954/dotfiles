@@ -1,3 +1,4 @@
+---@type NvPluginSpec
 local util = require("lspconfig").util
 
 local M = {}

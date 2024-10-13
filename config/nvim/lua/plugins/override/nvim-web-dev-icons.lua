@@ -3,18 +3,19 @@ return {
   "nvim-tree/nvim-web-devicons",
   opts = {
     override = {
-      md = { icon = "󰽛", color = "#ffffff", name = "Markdown" },
-      mdx = { icon = "󰽛", color = "#ffffff", name = "Mdx" },
+      md = { icon = "󰽛", color = "#FFFFFF", name = "Md" },
+      mdx = { icon = "󰽛", color = "#FFFFFF", name = "Mdx" },
+      markdown = { icon = "󰽛", color = "#FFFFFF", name = "Markdown" },
     },
     override_by_extension = {
-      astro = { icon = "", color = "#fe5d02", name = "astro" },
+      astro = { icon = "", color = "#FE5D02", name = "Astro" },
       javascript = { icon = "" },
       typescript = { icon = "󰛦" },
-      lockb = { icon = "", color = "#fbf0df", name = "bun-lock" },
+      lockb = { icon = "", color = "#FBF0DF", name = "bun-lock" },
     },
     override_by_filename = {
-      [".stylua.toml"] = { icon = "", color = "#6d8086", name = "stylua" },
-      [".gitignore"] = { icon = "", color = "#6d8086", name = "gitignore" },
+      [".stylua.toml"] = { icon = "", color = "#6D8086", name = "stylua" },
+      [".gitignore"] = { icon = "", color = "#F44D27", name = "gitignore" },
       ["license"] = { icon = "󰿃", name = "License" },
     },
   },
