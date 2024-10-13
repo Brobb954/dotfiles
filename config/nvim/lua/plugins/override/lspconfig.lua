@@ -22,7 +22,6 @@ return {
         "jsonls",
         "marksman",
         "ocamllsp",
-        "pyright",
         "somesass_ls",
         "tailwindcss",
         "taplo",
