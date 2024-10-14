@@ -6,14 +6,23 @@ done
 
 autoload -U compinit && compinit
 
-export PATH=/opt/homebrew/bin:$PATH
-source ~/.config/zsh/plugin/fzf-tab.plugin.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if $OSTYPE == linux*
+  source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source ~/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+  source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  # eval "$(oh-my-posh init zsh --config ~/.config/zsh/plugins/omp/custom_theme.toml)"
+end
+
+if $OSTYPE == darwin*
+  export PATH=/opt/homebrew/bin:$PATH
+  source ~/.config/zsh/plugin/fzf-tab.plugin.zsh
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  eval "$(oh-my-posh init zsh --config ~/custom_theme.toml)"
+end
 
 
-
-eval "$(oh-my-posh init zsh --config ~/custom_theme.toml)"
 eval "$(fzf --zsh)"
 
 HISTSIZE=5000
