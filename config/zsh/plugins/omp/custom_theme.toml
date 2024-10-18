@@ -1,0 +1,84 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+final_space = true
+version = 2
+
+[palette]
+os = "#e0def4"
+closer = "p:os"
+pink = "#eb6f92"
+lavender = "#c4a7e7"
+blue = "#9ccfd8"
+
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+
+[[blocks.segments]]
+foreground = "p:os"
+style = "plain"
+template = "{{.Icon}} "
+type = "os"
+
+[[blocks.segments]]
+foreground = "p:pink"
+style = "powerline"
+template = "{{ .Path }} "
+type = "path"
+
+[blocks.segments.properties]
+folder_icon = "...."
+home_icon = "~"
+style = "agnoster_short"
+
+[[blocks.segments]]
+foreground = "p:lavender"
+template = "{{ .HEAD }} "
+style = "plain"
+type = "git"
+
+[blocks.segments.properties]
+branch_icon = " "
+cherry_pick_icon = " "
+commit_icon = " "
+fetch_status = false
+fetch_upstream_icon = false
+merge_icon = " "
+no_commits_icon = " "
+rebase_icon = " "
+revert_icon = " "
+tag_icon = " "
+
+[[blocks]]
+type = "rprompt"
+overflow = "hidden"
+
+[[blocks.segments]]
+type = "executiontime"
+style = "powerline"
+powerline_symbol = ""
+foreground = "p:pink"
+background = "transparent"
+template = "  {{ .FormattedMs }} "
+
+[blocks.segments.properties]
+threshold = 5000
+style = "austin"
+always_enabled = false
+
+[[blocks]]
+type = "prompt"
+alignment = "left"
+newline = true
+
+[[blocks.segments]]
+style = "plain"
+newline = true
+foreground = "p:closer"
+template = ""
+type = "text"
+
+[transient_prompt]
+foreground = "p:lavender"
+background = "transparent"
+template = " "

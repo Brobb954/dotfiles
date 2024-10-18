@@ -1,0 +1,16 @@
+layout {
+  zellij:tab-bar
+  tab name="Nvim" focus=true {
+    pane borderless=true {
+      command="nvim"
+      cwd "."
+    }
+  }
+  tab name="Term"{
+    pane split_direction="horizontal" {
+      pane size="80%"
+      pane size="20%"
+    }
+  }
+  zellij:compact-bar
+}

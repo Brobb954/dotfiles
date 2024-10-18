@@ -8,8 +8,8 @@ local themes_customs = require("brobb.chadrc_aux").themes_customs
 
 M.base46 = {
   transparency = true,
-  theme = "catppuccin", ---@diagnostic disable-line
-  theme_toggle = { "catppuccin", "catppuccin" }, ---@diagnostic disable-line
+  theme = "tokyonight", ---@diagnostic disable-line
+  theme_toggle = { "catppuccin", "rosepine" }, ---@diagnostic disable-line
   integrations = {
     "blankline",
     "cmp",

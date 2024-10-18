@@ -1,0 +1,17 @@
+layout {
+  pane split_direction="horizontal" {
+    pane split_direction="vertical" size="47%"{
+      pane command="neofetch" name="Neofetch" size="50%"
+      pane name="Session Manager"{
+        plugin location="zellij:session-manager" {
+          cwd="/"
+          welcome_screen true
+        }
+      }
+    }
+   pane name="Terminal" focus=true {
+
+    }
+  }
+      plugin location="zellij:status-bar"
+}
