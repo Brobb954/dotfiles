@@ -8,6 +8,13 @@ alias restart='sudo reboot'
 alias suspend='sudo pm-suspend'
 
 
+# +--------+
+# | zellij |
+# +--------+
+alias zds='zellij delete-session --force'
+alias za='zellij a '
+alias zls='zellij ls'
+
 # +-----+
 # | git |
 # +-----+

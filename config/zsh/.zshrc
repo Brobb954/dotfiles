@@ -32,7 +32,7 @@ case $OSTYPE in
     source ~/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
     source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    export STARSHIP_CONFIG="~/.config/starship/starship.toml"
+    export STARSHIP_CONFIG=~/.config/starship/starship.toml
     if [ -z "$ZELLIJ" ]; then
       zellij --layout ~/.config/zellij/layouts/default.kdl
     fi
@@ -43,5 +43,31 @@ case $OSTYPE in
 
 esac
 
-eval "$(fzf --zsh)"
 eval "$(starship init zsh)"
+
+autoload -Uz add-zsh-hook add-zle-hook-widget
+
+# Function to update the prompt before each command
+.prompt.precmd.update_prompt() {
+    FULL_PROMPT=$(starship prompt)
+    COMPACT_PROMPT="${FULL_PROMPT##*$'\n'}"
+}
+
+add-zsh-hook precmd .prompt.precmd.update_prompt
+
+# ZLE hooks to switch between full and compact prompts
+.prompt.compact.line-finish() {
+    PS1="$COMPACT_PROMPT"
+    zle reset-prompt
+}
+
+.prompt.compact.line-init() {
+    PS1="$FULL_PROMPT"
+    zle reset-prompt
+}
+
+add-zle-hook-widget zle-line-finish .prompt.compact.line-finish
+add-zle-hook-widget zle-line-init   .prompt.compact.line-init
+
+eval "$(fzf --zsh)"
+. "/Users/brandonrobb/.deno/env"
