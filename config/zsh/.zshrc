@@ -1,4 +1,3 @@
-
 for alias_file in ~/.config/zsh/aliases/aliases.txt; do
 	[ -r "$alias_file" ] && [ -f "$alias_file" ] && source "$alias_file"
 done
@@ -24,14 +23,19 @@ case $OSTYPE in
   linux-gnu*)
     source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
     source ~/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
-    source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    # eval "$(oh-my-posh init zsh --config ~/.config/zsh/plugins/omp/custom_theme.toml)"
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    export PATH="$PATH:/opt/nvim/"
+    export PATH=$PATH:/usr/local/go/bin
+    export PATH=$PATH:$(go env GOPATH)/bin
+    export STARSHIP_CONFIG=~/.config/starship/starship.toml
+    . ".deno/env"
     ;;
   darwin*)
     export PATH=/opt/homebrew/bin:$PATH
     source ~/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
     source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    . "/Users/brandonrobb/.deno/env"
     export STARSHIP_CONFIG=~/.config/starship/starship.toml
     if [ -z "$ZELLIJ" ]; then
       zellij --layout ~/.config/zellij/layouts/default.kdl
@@ -69,5 +73,4 @@ add-zsh-hook precmd .prompt.precmd.update_prompt
 add-zle-hook-widget zle-line-finish .prompt.compact.line-finish
 add-zle-hook-widget zle-line-init   .prompt.compact.line-init
 
-eval "$(fzf --zsh)"
-. "/Users/brandonrobb/.deno/env"
+eval "$(fzf --zsh)
