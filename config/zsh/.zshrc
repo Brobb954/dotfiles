@@ -24,11 +24,15 @@ case $OSTYPE in
     source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
     source ~/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source /etc/profile.d/apps-bin-path.sh
     export PATH="$PATH:/opt/nvim/"
     export PATH=$PATH:/usr/local/go/bin
     export PATH=$PATH:$(go env GOPATH)/bin
     export STARSHIP_CONFIG=~/.config/starship/starship.toml
     . ".deno/env"
+    if [ -z "$ZELLIJ" ]; then
+      zellij --layout ~/.config/zellij/layouts/default.kdl
+    fi
     ;;
   darwin*)
     export PATH=/opt/homebrew/bin:$PATH
