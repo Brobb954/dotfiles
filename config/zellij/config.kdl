@@ -11,6 +11,8 @@ keybinds clear-defaults=true{
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
+        bind "Ctrl r" { SwitchToMode "Resize"; }
+        bind "Ctrl m" { SwitchToMode "Move"; }
     }
     resize {
         bind "h" "Left" { Resize "Increase Left"; }

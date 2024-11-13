@@ -79,6 +79,8 @@ alias tux-transfer="sftp bar0086@sftp.eng.auburn.edu"
 # | Dev |
 # +-----+
 alias p3='python3'
+alias docker_pg='docker run --name postgres-dev -e POSTGRES_PASSWORD=test -p 5432:5432 -d postgres'
+alias pg_login='docker exec -it postgres-dev psql -U postgres'
 
 # +--------+
 # | Neovim |

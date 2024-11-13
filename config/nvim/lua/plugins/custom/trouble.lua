@@ -1,7 +1,15 @@
 ---@type NvPluginSpec
 return {
   "folke/trouble.nvim",
-  opts = {},
+  opts = {
+    signs = {
+      error = "error",
+      warning = "warn",
+      hint = "hint",
+      information = "info",
+      other = "other",
+    },
+  },
   cmd = "Trouble",
   keys = {
     {

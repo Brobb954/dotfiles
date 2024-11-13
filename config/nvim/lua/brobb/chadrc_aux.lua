@@ -56,7 +56,6 @@ M.themes_customs = {
       CursorLineNr = { fg = "yellow" },
       MatchWord = { fg = "NONE", bg = "black2" },
       MatchBackground = { link = "MatchWord" },
-      CodeActionSignHl = { fg = "yellow" },
     },
   },
 }

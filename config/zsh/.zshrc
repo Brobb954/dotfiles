@@ -28,22 +28,18 @@ case $OSTYPE in
     export PATH="$PATH:/opt/nvim/"
     export PATH=$PATH:/usr/local/go/bin
     export PATH=$PATH:$(go env GOPATH)/bin
+    export PATH=$PATH:/Users/Library/PostgreSQL/17/bin/
     export STARSHIP_CONFIG=~/.config/starship/starship.toml
     . ".deno/env"
-    if [ -z "$ZELLIJ" ]; then
-      zellij --layout ~/.config/zellij/layouts/default.kdl
-    fi
     ;;
   darwin*)
     export PATH=/opt/homebrew/bin:$PATH
     source ~/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
     source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    export PATH=$PATH:$(go env GOPATH)/bin
     . "/Users/brandonrobb/.deno/env"
-    export STARSHIP_CONFIG=~/.config/starship/starship.toml
-    if [ -z "$ZELLIJ" ]; then
-      zellij --layout ~/.config/zellij/layouts/default.kdl
-    fi
+    . "/Users/brandonrobb/dotfiles/config/asdf/asdf.sh"
     ;;
   *)
     echo "IDK this shouldnt happen"
@@ -77,4 +73,4 @@ add-zsh-hook precmd .prompt.precmd.update_prompt
 add-zle-hook-widget zle-line-finish .prompt.compact.line-finish
 add-zle-hook-widget zle-line-init   .prompt.compact.line-init
 
-eval "$(fzf --zsh)
+eval "$(fzf --zsh)"

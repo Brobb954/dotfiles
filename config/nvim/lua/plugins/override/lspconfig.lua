@@ -24,7 +24,6 @@ return {
       eslint = {},
       html = {},
       hls = {},
-      gopls = {},
       jsonls = {},
       lua_ls = {
         settings = {
@@ -38,7 +37,7 @@ return {
       },
       marksman = {},
       ocamllsp = {},
-      ruff_lsp = {
+      ruff = {
         on_attach = function(client, _)
           -- prefer pyright's hover provider
           client.server_capabilities.hoverProvider = false
@@ -90,8 +89,5 @@ return {
       float = { border = border },
       underline = true,
     }
-
-    -- Gutter
-    vim.fn.sign_define("CodeActionSign", { text = "󰉁", texthl = "CodeActionSignHl" })
   end,
 }

@@ -200,40 +200,6 @@ M.format_file = function(file_path)
   vim.api.nvim_buf_delete(bufnr, { force = true })
 end
 
---- Listener for code actions capabilities
-M.code_action_listener = function()
-  local buffer = vim.api.nvim_get_current_buf()
-  local clients = vim.lsp.get_clients { bufnr = buffer }
-
-  if clients == nil or #clients == 0 then
-    return
-  end
-
-  local has_code_action_support = vim.tbl_filter(function(client)
-    return client.server_capabilities.codeActionProvider
-  end, clients)[1] ~= nil
-
-  if has_code_action_support then
-    local context = { diagnostics = vim.lsp.diagnostic.get_line_diagnostics(buffer) }
-    local params = vim.lsp.util.make_range_params()
-    params.context = context
-
-    vim.lsp.buf_request(buffer, "textDocument/codeAction", params, function(_, result, _, _)
-      vim.fn.sign_unplace("code_action_gear", { buffer = buffer })
-
-      if result and next(result) then
-        vim.fn.sign_place(
-          0,
-          "code_action_gear",
-          "CodeActionSign",
-          buffer,
-          { lnum = vim.api.nvim_win_get_cursor(0)[1], priority = 100 }
-        )
-      end
-    end)
-  end
-end
-
 M.handle_copy = function()
   local mode = vim.fn.mode()
   if mode == "v" or mode == "V" or mode == "" then
@@ -321,4 +287,54 @@ M.count_words_in_buffer = function()
   end
 end
 
+M.dapui = {
+  icons = { expanded = "▾", collapsed = "▸" },
+  mappings = {
+    expand = { "<CR>", "<2-LeftMouse>" },
+    open = "o",
+    remove = "d",
+    edit = "e",
+    repl = "r",
+    toggle = "t",
+  },
+  expand_lines = false,
+  layouts = {
+    {
+      elements = {
+        { id = "scopes", size = 0.40 },
+        { id = "breakpoints", size = 0.20 },
+        { id = "stacks", size = 0.20 },
+        { id = "watches", size = 0.20 },
+      },
+      size = 40, -- 40 columns
+      position = "left",
+    },
+    {
+      elements = {
+        {
+          id = "repl",
+          size = 0.5,
+        },
+        -- {
+        --   id = "console",
+        --   size = 0.5,
+        -- },
+      },
+      size = 10, -- 25% of total lines
+      position = "bottom",
+    },
+  },
+  floating = {
+    max_height = nil,
+    max_width = nil,
+    border = "rounded", -- Border style. Can be "single", "double" or "rounded"
+    mappings = {
+      close = { "q", "<Esc>" },
+    },
+  },
+  windows = { indent = 1 },
+  render = {
+    max_type_length = nil,
+  },
+}
 return M

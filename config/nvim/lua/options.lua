@@ -47,8 +47,6 @@ local opt = {
   ignorecase = true,
   updatetime = 100,
   lazyredraw = false,
-  iskeyword = vim.opt.iskeyword:append { "_", "@", ".", "-" },
-  path = vim.opt.path:append { "**", "lua", "src" },
 }
 
 for k, v in pairs(g) do
@@ -58,3 +56,5 @@ end
 for k, v in pairs(opt) do
   vim.opt[k] = v
 end
+vim.opt.iskeyword:append { "_", "@", ".", "-" }
+vim.opt.path:append { "**", "lua", "src" }
