@@ -22,7 +22,7 @@ autocmd("BufLeave", {
   end,
 })
 
-autocmd("Filetype", {
+autocmd("FileType", {
   desc = "Prevent <Tab>/<S-Tab> from switching specific buffers.",
   pattern = {
     "codecompanion",

@@ -1,22 +1,14 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 for alias_file in ~/.config/zsh/aliases/aliases.txt; do
 	[ -r "$alias_file" ] && [ -f "$alias_file" ] && source "$alias_file"
 done
 
-autoload -U compinit && compinit
-
-HISTSIZE=5000
-HISTFILE=~/.config/zsh/.zsh_history
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
 
 case $OSTYPE in
 
@@ -28,18 +20,12 @@ case $OSTYPE in
     export PATH="$PATH:/opt/nvim/"
     export PATH=$PATH:/usr/local/go/bin
     export PATH=$PATH:$(go env GOPATH)/bin
-    export PATH=$PATH:/Users/Library/PostgreSQL/17/bin/
-    export STARSHIP_CONFIG=~/.config/starship/starship.toml
     . ".deno/env"
     ;;
   darwin*)
     export PATH=/opt/homebrew/bin:$PATH
-    source ~/.config/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
-    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     export PATH=$PATH:$(go env GOPATH)/bin
     . "/Users/brandonrobb/.deno/env"
-    . "/Users/brandonrobb/dotfiles/config/asdf/asdf.sh"
     ;;
   *)
     echo "IDK this shouldnt happen"
@@ -47,30 +33,23 @@ case $OSTYPE in
 
 esac
 
-eval "$(starship init zsh)"
+export ZSH="$HOME/.oh-my-zsh"
 
-autoload -Uz add-zsh-hook add-zle-hook-widget
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Function to update the prompt before each command
-.prompt.precmd.update_prompt() {
-    FULL_PROMPT=$(starship prompt)
-    COMPACT_PROMPT="${FULL_PROMPT##*$'\n'}"
-}
+plugins=(git fzf-tab zsh-syntax-highlighting zsh-autosuggestions fast-syntax-highlighting)
 
-add-zsh-hook precmd .prompt.precmd.update_prompt
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+bindkey '^ ' autosuggest-accept
 
-# ZLE hooks to switch between full and compact prompts
-.prompt.compact.line-finish() {
-    PS1="$COMPACT_PROMPT"
-    zle reset-prompt
-}
+source $ZSH/oh-my-zsh.sh
 
-.prompt.compact.line-init() {
-    PS1="$FULL_PROMPT"
-    zle reset-prompt
-}
-
-add-zle-hook-widget zle-line-finish .prompt.compact.line-finish
-add-zle-hook-widget zle-line-init   .prompt.compact.line-init
-
-eval "$(fzf --zsh)"
+zstyle ':fzf-tab:*' continuous-trigger 'tab'
+zstyle ':fzf-tab:*' accept-line enter
+zstyle ':completion:*' menu select=0
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

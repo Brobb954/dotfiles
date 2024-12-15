@@ -4,17 +4,9 @@ return {
   "folke/noice.nvim",
   event = "VeryLazy",
   dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
   },
   opts = {
-    routes = {
-      {
-        view = "notify",
-        filter = { event = "msg_showmode" },
-      },
-    },
     views = {
       cmdline_popup = {
         position = {
@@ -22,7 +14,7 @@ return {
           col = "50%",
         },
         size = {
-          width = 60,
+          width = "auto",
           height = "auto",
         },
       },

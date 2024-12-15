@@ -1,7 +1,7 @@
 require "nvchad.options"
 
 local g = {
-  dap_virtual_text = true,
+  dap_virtual_text = false,
   bookmark_sign = "",
   skip_ts_context_commentstring_module = true,
 }
@@ -13,7 +13,7 @@ vim.diagnostic.config {
 local opt = {
   encoding = "utf-8",
   fileencoding = "utf-8",
-  clipboard = "unnamedplus", -- extended via "gale.wsl"
+  clipboard = "unnamedplus",
   -- Folds
   foldmethod = "expr",
   foldexpr = "v:lua.vim.treesitter.foldexpr()",

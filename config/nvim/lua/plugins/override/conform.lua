@@ -16,7 +16,6 @@ return {
       css = { "prettier" },
       scss = { "prettier" },
       gleam = { "gleam" },
-      go = { "gopls" },
       html = { "prettier" },
       javascript = { "prettier" },
       javascriptreact = { "prettier" },
@@ -44,6 +43,18 @@ return {
     formatters = {
       yamlfmt = {
         args = { "-formatter", "retain_line_breaks_single=true" },
+      },
+
+      gofrumpt = {
+        exe = "gofrumpt",
+        args = {},
+        stdin = true,
+      },
+
+      goimport = {
+        exe = "goimports",
+        args = {},
+        stdin = true,
       },
     },
   },

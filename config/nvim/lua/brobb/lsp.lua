@@ -22,6 +22,7 @@ local on_attach = function(_, bufnr)
   map("n", "<leader>gr", vim.lsp.buf.references, { desc = "LSP show references" })
   map("n", "<leader>gt", vim.lsp.buf.type_definition, { desc = "LSP go to type definition" })
 
+  -- Go keymaps
   map("n", "<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, { desc = "LSP list workspace folders" })
