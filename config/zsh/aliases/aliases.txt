@@ -11,9 +11,16 @@ alias suspend='sudo pm-suspend'
 # +--------+
 # | zellij |
 # +--------+
-alias zds='zellij delete-session --force'
-alias za='zellij a '
-alias zls='zellij ls'
+# alias zds='zellij delete-session --force'
+# alias za='zellij a '
+# alias zls='zellij ls'
+
+# +---------+
+# | General |
+# +---------+
+
+alias muxin='tmuxinator'
+alias cd='z'
 
 # +-----+
 # | git |
@@ -32,7 +39,7 @@ alias gbs='git switch -c '
 alias gb='git branch '
 alias gcb='git checkout -b'
 alias gc='git commit'
-alias gcm='git commit -m'
+alias gcm='git commit -m '
 alias gcf='git cat-file -p'
 alias gd='git diff'
 alias gco='git checkout '
@@ -85,6 +92,7 @@ alias pg_login='docker exec -it postgres-dev psql -U postgres'
 # +--------+
 # | Neovim |
 # +--------+
+alias nnvim='NVIM_APPNAME=nvim-nightly nvim'
 
 alias vim='nvim'
 alias vi='nvim'

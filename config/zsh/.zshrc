@@ -25,6 +25,7 @@ case $OSTYPE in
   darwin*)
     export PATH=/opt/homebrew/bin:$PATH
     export PATH=$PATH:$(go env GOPATH)/bin
+    export EDITOR='nvim'
     . "/Users/brandonrobb/.deno/env"
     ;;
   *)
@@ -33,6 +34,7 @@ case $OSTYPE in
 
 esac
 
+eval "$(zoxide init zsh)"
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -42,6 +44,7 @@ plugins=(git fzf-tab zsh-syntax-highlighting zsh-autosuggestions fast-syntax-hig
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 bindkey '^ ' autosuggest-accept
+
 
 source $ZSH/oh-my-zsh.sh
 
