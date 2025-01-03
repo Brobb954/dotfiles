@@ -1,0 +1,14 @@
+# /Users/brandonrobb/.config/tmuxinator/default.yml
+
+name: <%= @args[0] %>
+root: <%= @args[1] %>
+windows:
+  - nvim:
+      layout: main-vertical
+      panes:
+        - vim
+  - zsh:
+      layout: even-horizontal
+      panes:
+        - fastfetch; zsh
+        - lazygit
