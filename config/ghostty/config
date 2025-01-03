@@ -1,0 +1,13 @@
+# Color Stuff
+theme = tokyonight
+background-opacity = .9
+
+# Fonts
+font-family = "JetBrainsMono Nerd Font Mono"
+font-thicken = true
+font-size = 18
+
+# Mac Specific Configs
+macos-titlebar-style = hidden
+macos-option-as-alt = right
+
