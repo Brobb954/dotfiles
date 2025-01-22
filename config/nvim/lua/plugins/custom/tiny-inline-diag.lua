@@ -4,6 +4,8 @@ return {
   event = "VeryLazy",
   priority = 1000,
   config = function()
-    require("tiny-inline-diagnostic").setup()
+    require("tiny-inline-diagnostic").setup {
+      multiple_diag_under_cursor = true,
+    }
   end,
 }

@@ -93,6 +93,7 @@ alias pg_login='docker exec -it postgres-dev psql -U postgres'
 # | Neovim |
 # +--------+
 alias nnvim='NVIM_APPNAME=nvim-nightly nvim'
+alias gnvim='NVIM_APPNAME=nvim-gale nvim'
 
 alias vim='nvim'
 alias vi='nvim'

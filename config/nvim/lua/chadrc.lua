@@ -90,7 +90,6 @@ M.ui = {
       "harpoon",
       "word_count",
       "separator",
-      "cwd",
     },
     modules = {
       hack = modules.statusline.hack,

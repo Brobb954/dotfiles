@@ -72,10 +72,10 @@ return {
       return vim.regex(regex_str):match_str(name) ~= nil
     end
 
-    -- Automatically open file upon creation
-    api.events.subscribe(api.events.Event.FileCreated, function(file)
-      vim.cmd("edit " .. file.fname)
-    end)
+    -- -- Automatically open file upon creation
+    -- api.events.subscribe(api.events.Event.FileCreated, function(file)
+    --   vim.cmd("edit " .. file.fname)
+    -- end)
 
     -- Automatically detect and update renamed paths
     api.events.subscribe(api.events.Event.NodeRenamed, function(data)

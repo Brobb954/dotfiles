@@ -21,7 +21,6 @@ return {
   { import = "plugins.custom.intelephense" },
   { import = "plugins.custom.hop" },
   { import = "plugins.custom.lsp-signature" },
-  { import = "plugins.custom.lazygit" },
   { import = "plugins.custom.matchup" },
   { import = "plugins.custom.noice" },
   { import = "plugins.custom.rustacean" },

@@ -6,6 +6,15 @@ create_cmd("ToggleInlayHints", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Toogle inlay hints in current buffer" })
 
+create_cmd("DiagnosticsVirtualTextToggle", function()
+  local current_value = vim.diagnostic.config().virtual_text
+  if current_value then
+    vim.diagnostic.config { virtual_text = false }
+  else
+    vim.diagnostic.config { virtual_text = true }
+  end
+end, { desc = "Toggle Virtual Text" })
+
 create_cmd("DiagnosticsToggle", function()
   local current_value = vim.diagnostic.is_enabled()
   if current_value then
