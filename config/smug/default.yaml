@@ -1,0 +1,20 @@
+session: "{{.Project}}"
+root: "{{.ProjectPath}}"
+
+# Set default tmux options
+options:
+  default-shell: /bin/zsh
+  default-command: /bin/zsh
+
+# Set up your standard window layout
+windows:
+  - name: editor
+    root: {{.Project}}
+    layout: main-vertical
+    commands:
+      - nvim .
+    focus: true
+
+  - name: terminal
+    root: {{.Project}}
+    layout: tiled
