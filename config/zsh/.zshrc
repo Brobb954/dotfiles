@@ -16,7 +16,7 @@ export PATH="$HOME/.local/bin:$PATH"       # Custom scripts
 export PATH="$GOPATH/bin:$PATH"            # Go binaries
 export PATH="/opt/homebrew/bin:$PATH"      # Homebrew binaries
 export PATH="/opt/homebrew/sbin:$PATH"     # Homebrew system utilities
-
+export PATH="/Users/brandonrobb/.local/share/solana/install/active_release/bin:$PATH"
 # Set default editor
 export EDITOR="nvim"
 
