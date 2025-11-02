@@ -1,0 +1,32 @@
+---@type NvPluginSpec
+return {
+  "nvim-treesitter/nvim-treesitter",
+  dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", "nvim-treesitter/playground" },
+  opts = {
+    ensure_installed = {
+      "bash",
+      "c",
+      "css",
+      "go",
+      "gomod",
+      "gowork",
+      "gosum",
+      "html",
+      "http",
+      "javascript",
+      "json",
+      "lua",
+      "markdown",
+      "markdown_inline",
+      "rust",
+      "toml",
+      "tsx",
+      "typescript",
+      "vim",
+      "vimdoc",
+    },
+    auto_install = true,
+    indent = { enable = true },
+    highlight = { enable = true },
+  },
+}

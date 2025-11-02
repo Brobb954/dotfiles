@@ -1,5 +1,5 @@
 ---
-json_rpc_url: http://localhost:8899
+json_rpc_url: https://api.devnet.solana.com
 websocket_url: ''
 keypair_path: /Users/brandonrobb/.config/solana/id.json
 address_labels:
